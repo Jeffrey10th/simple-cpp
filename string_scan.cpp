@@ -24,23 +24,33 @@ int main() {
 
     //the two variables must not have the same value
     std::string previous_word = " ";
-    std::string current_word = "\n"; 
+    std::string current_word = ""; 
+
+    int recnt = 0;
 
     std::cout << "Enter an array of words separated by a space: " << std::endl;
-    std::cout << '\n';
-    
-    while (std::cin >> current_word) {
 
+    //check if input is available and provide first value
+    if (std::cin >> previous_word) {
 
-        if (previous_word == current_word) {
+        while (std::cin >> current_word) {
+            
+            recnt++;
 
-            std::cout << previous_word << " appears to have repeated." << std::endl; 
+            if (previous_word == current_word) {
+
+                recnt++;
+
+            } else if (previous_word != current_word) {
+
+                std::cout << '\n' << previous_word << " appears to have recurred " << recnt << " times in a row." << std::endl;
+                previous_word = current_word;
+                recnt = 0;
+
+            }
 
         }
 
-        previous_word = current_word;
-
     }
-
 
 }
